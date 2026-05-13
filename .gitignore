@@ -55,3 +55,4 @@ models/transformers/saved/distilbert/
 results/
 logs/
 *.log
+*.docx
