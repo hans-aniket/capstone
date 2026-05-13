@@ -2,6 +2,7 @@ services:
   - type: web
     name: copestone-nlp
     env: python
+    plan: free
     buildCommand: |
       pip install -r requirements.txt
       cd frontend && npm install && npm run build
