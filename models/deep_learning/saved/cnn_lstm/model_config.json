@@ -1,0 +1,13 @@
+{
+  "vocab_size": 36790,
+  "embed_dim": 100,
+  "num_filters": 128,
+  "kernel_size": 3,
+  "lstm_hidden": 128,
+  "lstm_layers": 1,
+  "num_classes": 2,
+  "bidirectional": true,
+  "dropout": 0.3,
+  "pad_idx": 0,
+  "max_len": 200
+}

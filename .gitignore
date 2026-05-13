@@ -1,0 +1,57 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node & Frontend
+frontend/node_modules/
+npm-debug.log*
+
+# Datasets
+data/raw/
+data/processed/
+*.csv
+*.parquet
+*.jsonl
+
+# Large Checkpoints & Unnecessary Weights
+# Ignore all 'last' checkpoints as they contain optimizer states and are huge
+*checkpoint_last.pt
+
+# Ignore the DistilBERT fine-tuned model (766+ MB) which exceeds GitHub's 100MB limit 
+# and will crash Render's 512MB Free Tier instances via OOM.
+models/transformers/saved/distilbert/
+
+# Keep the remaining 'best' checkpoints for Classical & Deep Learning 
+# as they are small enough (<70MB) to pass GitHub limits and run on Render.
+!models/deep_learning/saved/**/checkpoint_best.pt
+!models/classical/saved/**/model.joblib
+
+# Logs and Reports
+results/
+logs/
+*.log

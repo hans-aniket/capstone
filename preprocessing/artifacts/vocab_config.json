@@ -1,0 +1,10 @@
+{
+  "vocab_size": 36790,
+  "min_freq": 2,
+  "pad_token": "<PAD>",
+  "pad_index": 0,
+  "unk_token": "<UNK>",
+  "unk_index": 1,
+  "max_len": 200,
+  "embed_dim": 100
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "amazon_polarity",
+  "seed": 42,
+  "n_train_per_class": 10000,
+  "n_test_per_class": 2500,
+  "train_total": 20000,
+  "test_total": 5000,
+  "label_map": {
+    "0": "negative",
+    "1": "positive"
+  },
+  "text_fields": [
+    "title",
+    "content"
+  ],
+  "created_at": "2026-05-13T19:48:53.795132+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "vocab_size": 36790,
+  "embed_dim": 100,
+  "num_filters": 128,
+  "filter_sizes": [
+    2,
+    3,
+    4
+  ],
+  "num_classes": 2,
+  "dropout": 0.5,
+  "pad_idx": 0,
+  "max_len": 200
+}
