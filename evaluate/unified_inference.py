@@ -11,6 +11,7 @@ import sys
 import logging
 import pathlib
 import time
+import os
 
 _PROJECT_ROOT = pathlib.Path(__file__).parents[1]
 if str(_PROJECT_ROOT) not in sys.path:
@@ -53,6 +54,12 @@ class UnifiedPredictor:
                 self.predictors[name] = ClassicalPredictor.from_saved(key)
             except Exception as e:
                 logger.warning("Could not load %s: %s", name, e)
+
+        # To prevent OOM (Out of Memory) crashes on Render's 512MB Free Tier,
+        # we skip loading the heavy PyTorch Deep Learning and Transformer models.
+        if os.environ.get("RENDER") == "true":
+            logger.warning("Detected Render environment! Skipping Deep Learning and Transformer models to prevent OOM crash.")
+            return
 
         # 4: LSTM
         logger.info("Loading Deep Learning (LSTM)...")
