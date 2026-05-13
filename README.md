@@ -1,3 +1,12 @@
+---
+title: Comparative Sentiment Analysis
+emoji: 📊
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # Comparative Sentiment Analysis — Product Reviews
 
 A systematic benchmark comparing **Classical ML**, **Deep Learning**, and **Transformer** models on the `amazon_polarity` dataset.
