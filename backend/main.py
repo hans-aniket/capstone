@@ -13,6 +13,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 _PROJECT_ROOT = pathlib.Path(__file__).parents[1]
 if str(_PROJECT_ROOT) not in sys.path:
@@ -70,6 +71,8 @@ app.add_middleware(
 app.include_router(api_router)
 
 _FRONTEND_DIST = _PROJECT_ROOT / "frontend" / "dist"
+if (_FRONTEND_DIST / "assets").exists():
+    app.mount("/assets", StaticFiles(directory=_FRONTEND_DIST / "assets"), name="assets")
 
 @app.get("/{full_path:path}")
 async def serve_frontend(full_path: str):

@@ -100,7 +100,15 @@ class DLPredictor(BasePredictor):
         model_kwargs = {k: v for k, v in cfg.items() if k in init_keys}
         model = model_cls(**model_kwargs)
 
-        ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
+        try:
+            ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
+        except Exception as e:
+            fallback = checkpoint_path.parent / "checkpoint_last.pt"
+            if fallback.exists():
+                logger.info("[DLPredictor] Falling back to %s", fallback)
+                ckpt = torch.load(fallback, map_location=device, weights_only=False)
+            else:
+                raise e
         model.load_state_dict(ckpt["model_state_dict"])
         logger.info(
             "[DLPredictor] %s loaded (epoch=%d  val_f1=%.4f)",

@@ -50,6 +50,7 @@ UNK_TOKEN = "<UNK>"  # index 1 — out-of-vocabulary at test time
 TRANSFORMER_MODELS = {
     "bert":       "bert-base-uncased",
     "distilbert": "distilbert-base-uncased",
+    "roberta":    "roberta-base",
 }
 TRANSFORMER_MAX_LEN = 128  # subword tokens; covers ~90th percentile of reviews
 

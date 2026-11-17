@@ -60,7 +60,7 @@ def load_splits() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=str, choices=["bert", "distilbert"], required=True,
+    parser.add_argument("--model", type=str, choices=["bert", "distilbert", "roberta"], required=True,
                         help="Which transformer model to train")
     parser.add_argument("--subsample", type=int, default=0,
                         help="Optionally train on fewer samples for quick testing")
@@ -70,7 +70,8 @@ def main():
     hf_model_name = TRANSFORMER_MODELS[model_key]
     paths = get_model_paths(model_key)
     
-    display_name = "BERT" if model_key == "bert" else "DistilBERT"
+    display_names = {"bert": "BERT", "distilbert": "DistilBERT", "roberta": "RoBERTa"}
+    display_name = display_names[model_key]
 
     logger.info("=" * 58)
     logger.info("%s Training Pipeline | device: %s", display_name, DEVICE)

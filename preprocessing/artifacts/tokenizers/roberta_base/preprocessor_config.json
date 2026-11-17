@@ -1,0 +1,10 @@
+{
+  "model_name": "roberta-base",
+  "max_length": 128,
+  "vocab_size": 50265,
+  "pad_token": "<pad>",
+  "pad_token_id": 1,
+  "cls_token": "<s>",
+  "sep_token": "</s>",
+  "do_lower_case": null
+}

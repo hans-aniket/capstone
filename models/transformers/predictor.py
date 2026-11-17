@@ -55,7 +55,15 @@ class TransformerPredictor(BasePredictor):
         )
         
         # Load custom fine-tuned weights
-        ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
+        try:
+            ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
+        except Exception as e:
+            fallback = checkpoint_path.parent / "checkpoint_last.pt"
+            if fallback.exists():
+                logger.info("[TransformerPredictor] Falling back to %s", fallback)
+                ckpt = torch.load(fallback, map_location=device, weights_only=False)
+            else:
+                raise e
         model.load_state_dict(ckpt["model_state_dict"])
         
         logger.info(
