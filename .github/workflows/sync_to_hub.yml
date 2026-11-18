@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          lfs: true
+          lfs: false
           
       - name: Push to Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git push https://anikethans06:$HF_TOKEN@huggingface.co/spaces/anikethans06/capstone main --force
+          git push --force --no-verify https://anikethans06:$HF_TOKEN@huggingface.co/spaces/anikethans06/capstone main
